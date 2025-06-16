@@ -48,7 +48,4 @@ Logged-in admins can always bypass the password gate
 
 To test the flow again, visit:
 
-arduino
-Αντιγραφή
-Επεξεργασία
 https://yoursite.com/enter/?pwg_logout
