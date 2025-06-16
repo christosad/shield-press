@@ -7,7 +7,7 @@ ShieldPress is a lightweight WordPress plugin that adds a secure, password-prote
 
 Download or clone the repository into your WordPress `/wp-content/plugins/` directory:
 
-git clone https://github.com/yourusername/shieldpress.git wp-content/plugins/shieldpress
+git clone https://github.com/yourusername/shield-press.git wp-content/plugins/shieldpress
 Or upload the ZIP via WordPress admin:
 
 Go to Plugins → Add New → Upload Plugin
