@@ -1,51 +1,84 @@
 # 🔐 shield-press
 ShieldPress is a lightweight WordPress plugin that adds a secure, password-protected landing gate to your entire site — without using JavaScript. Designed for simplicity, privacy, and admin control, it allows site owners to restrict public access with a single password and configure it easily from the WordPress dashboard.
 
-# 🚀 How to Use
-1. Install the Plugin
+## 🚀 How to Use
 
-Download or clone the repository into your WordPress /wp-content/plugins/ directory:
+### 🔧 Install the Plugin
+
+Download or clone the repository into your WordPress `/wp-content/plugins/` directory:
 
 git clone https://github.com/yourusername/shieldpress.git wp-content/plugins/shieldpress
+Or upload the ZIP via WordPress admin:
 
-Or upload the ZIP file via the WordPress admin:
+Go to Plugins → Add New → Upload Plugin
 
-Plugins → Add New → Upload Plugin
+Upload the ShieldPress ZIP and click Install Now
 
-2. Activate ShieldPress
-
+### ✅ Activate ShieldPress
 Go to Plugins → Installed Plugins
 
 Click Activate on ShieldPress
 
-3. Set Your Password
+### 🔐 Set Your Access Password
+Go to Tools → ShieldPress
 
-Go to Tools → ShieldPress in the WordPress dashboard
+Enter your desired password and click Save
 
-Enter your desired access password and save it
+An eye icon toggle allows you to view/hide the password
 
-You’ll see a toggle (eye icon) to show/hide the saved password
+Password is securely stored using PHP hashing
 
-4. Create the Access Page
+### 🧱 Create the Access Page
+In WordPress, go to Pages → Add New
 
-Add a new page in WordPress (e.g., titled "Enter" or "Gate")
+Title it something like "Enter" or "Gate"
 
-Set the slug to match what’s configured in the plugin (default: /enter)
+Set the permalink slug to /enter (or match whatever your plugin is configured to use)
 
-No shortcode or block needed — ShieldPress handles everything automatically
+On the right side, under Page Attributes → Template, select:
 
-5. Test the Gate
+Enter Page (Shield Press)
+Publish the page
 
+### 📝 The page uses a special custom template included with the plugin to render the secure password form.
+
+### 🔎 Test the Gate
 Open your site in an incognito/private window
 
-You’ll be redirected to the access page until you enter the correct password
+You should be redirected to /enter until the correct password is entered
 
-6. Admin Bypass
+### 👤 Admin Bypass
+If you're logged in as an admin, you’ll bypass the password screen automatically
 
-Logged-in admins can always bypass the password gate
-
-7. Log Out / Reset Session
-
-To test the flow again, visit:
+### 🔁 Reset Session / Log Out
+To test again or simulate a logout:
 
 https://yoursite.com/enter/?pwg_logout
+### 🧩 Custom Template File
+Here’s the PHP template used for the gate page:
+
+<?php
+/**
+ * Template Name: Enter Page (Shield Press)
+ */
+
+session_start();
+get_header();
+
+$error = isset( $_SESSION['pwg_error'] ) ? $_SESSION['pwg_error'] : '';
+unset( $_SESSION['pwg_error'] );
+?>
+
+<div style="max-width: 400px; margin: 100px auto; text-align: center;">
+  <h2>Enter Password to Access</h2>
+  <?php if ( $error ) : ?>
+    <p style="color: red;"><?php echo esc_html( $error ); ?></p>
+  <?php endif; ?>
+  <form method="post">
+    <input type="password" name="pwg_password" required style="padding:10px;width:100%;margin:10px 0;">
+    <button type="submit" style="padding:10px 20px;">Enter</button>
+  </form>
+</div>
+
+<?php get_footer(); ?>
+Place this file in your theme directory (e.g., /wp-content/themes/your-theme/).
