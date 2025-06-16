@@ -33,7 +33,7 @@ In WordPress, go to Pages → Add New
 
 Title it something like "Enter" or "Gate"
 
-Set the permalink slug to ** /enter **
+Set the permalink slug to **/enter**
 
 On the right side, under Page Attributes → Template, select:
 
