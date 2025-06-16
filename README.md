@@ -41,7 +41,7 @@ Enter Page (Shield Press)
 Publish the page
 
 ### 📝 The page uses a special custom template included with the plugin to render the secure password form.
-See the enter-page.php file inside login page template
+See the enter-page.php file inside login page template folder
 
 ### 🔎 Test the Gate
 Open your site in an incognito/private window
