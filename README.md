@@ -40,7 +40,8 @@ On the right side, under Page Attributes → Template, select:
 Enter Page (Shield Press)
 Publish the page
 
-### 📝 The page uses a special custom template included with the plugin to render the secure password form. (see the enter-page.php file inside login page template)
+### 📝 The page uses a special custom template included with the plugin to render the secure password form.
+See the enter-page.php file inside login page template
 
 ### 🔎 Test the Gate
 Open your site in an incognito/private window
